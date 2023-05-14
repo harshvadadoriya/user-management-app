@@ -23,6 +23,7 @@ export interface Props {
 	control?: string;
 	label?: string;
 	name: string;
+	placeholder?: string;
 	options?: { key: string; value: string }[];
 	type?: string;
 	className?: string;

@@ -15,18 +15,21 @@ const initialValues: SignUpFormValues = {
 const validationSchema = Yup.object({
 	name: Yup.string()
 		.matches(/^[a-zA-Z\s]{15,}$/, 'Name must be at least 15 characters long')
-		.required('Required'),
+		.required('Name is required'),
 	email: Yup.string()
-		.email('Invalid email format')
-		.matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 'Invalid email format')
-		.required('Required'),
+		.email('Your email is invalid')
+		.matches(
+			/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+			'Your email is invalid'
+		)
+		.required('Email is required'),
 	phone: Yup.string()
 		.matches(/^(\+91[\s]?)?[0]?(91)?[789]\d{9}$/, 'Invalid phone number')
-		.required('Required'),
-	password: Yup.string().required('Required'),
+		.required('Phone number is required'),
+	password: Yup.string().required('Password is required'),
 	confirmPassword: Yup.string()
-		.oneOf([Yup.ref('password'), ''], 'Passwords must match')
-		.required('Required'),
+		.oneOf([Yup.ref('password'), ''], 'Passwords does not match')
+		.required('Confirm Password is required'),
 });
 
 const onSubmit = (
@@ -53,31 +56,40 @@ const Signup: React.FC = () => {
 								type="text"
 								label="Name"
 								name="name"
-								className="focus:outline-none w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:shadow-outline bg-antiquewhite"
-							/>
-							<FormikControl
-								control={InputControlType.Input}
-								type="email"
-								label="Email"
-								name="email"
+								placeholder="Enter your name"
+								className="text-xs  px-4 py-3 bg-custom-red  border-2  border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
 							/>
 							<FormikControl
 								control={InputControlType.Input}
 								type="text"
-								label="Phone number"
+								label="Email"
+								name="email"
+								placeholder="Enter your email"
+								className="text-sm  px-4 py-3 bg-custom-red  border-2  border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
+							/>
+							<FormikControl
+								control={InputControlType.Input}
+								type="text"
+								label="PhoneNo"
 								name="phone"
+								placeholder="Enter your phone"
+								className="text-sm  px-4 py-3 bg-custom-red  border-2  border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
 							/>
 							<FormikControl
 								control={InputControlType.Input}
 								type="password"
 								label="Password"
 								name="password"
+								placeholder="Enter your password"
+								className="text-sm  px-4 py-3 bg-custom-red  border-2  border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
 							/>
 							<FormikControl
 								control={InputControlType.Input}
 								type="password"
 								label="Confirm Password"
 								name="confirmPassword"
+								placeholder="confirm your password"
+								className="text-sm  px-4 py-3 bg-custom-red  border-2  border-gray-200 rounded-lg focus:outline-none focus:border-gray-400"
 							/>
 							<button
 								type="submit"
