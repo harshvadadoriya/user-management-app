@@ -1,12 +1,12 @@
-import Signup from './components/User-management/Signup.jsx';
+import Signup from './components/SignUp/Signup';
 import './App.css';
+import { Toaster } from 'react-hot-toast';
 
-const App = () => {
+const App = (): JSX.Element => {
 	return (
 		<>
-			<div className="App">
-				<Signup />
-			</div>
+			<Signup />
+			<Toaster />
 		</>
 	);
 };

@@ -17,6 +17,7 @@ export interface SignUpFormValues {
 	phone: string;
 	password: string;
 	confirmPassword: string;
+	image: File | null;
 }
 
 export interface Props {
@@ -35,8 +36,4 @@ export interface TextErrorProps {
 
 export enum InputControlType {
 	Input = 'input',
-	TextArea = 'textarea',
-	Select = 'select',
-	Radio = 'radio',
-	Checkbox = 'checkbox',
 }
