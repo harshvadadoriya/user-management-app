@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import SignupReducer from './SignupSlice/SignupSLice';
+import SignupReducer from './SignupSlice/SignupSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 import {
 	persistReducer,
@@ -11,12 +11,12 @@ import {
 	PURGE,
 	REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import sessionStorage from 'redux-persist/es/storage/session';
 
 const persistConfig = {
 	key: 'root',
 	version: 1,
-	storage,
+	storage: sessionStorage,
 };
 
 const reducer = combineReducers({

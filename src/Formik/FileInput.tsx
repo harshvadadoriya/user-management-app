@@ -36,7 +36,7 @@ const FileInput = ({ label, name }: Props) => {
 				<input id={name} type="file" onChange={handleFileChange} />
 			</label>
 			{selectedImg && (
-				<div className="w-[15rem] h-full grid place-items-center">
+				<div className="max-w-[8rem] h-full grid place-items-center">
 					<img src={selectedImg} alt="Preview" />
 				</div>
 			)}

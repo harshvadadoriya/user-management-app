@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignupUserData } from '../../redux/SignupSlice/SignupSLice';
+import { SignupUserData } from '../../redux/SignupSlice/SignupSlice';
 import { useAppSelector } from '../../redux/store';
 
 const Home = () => {
@@ -7,10 +7,7 @@ const Home = () => {
 	return (
 		<>
 			<div className="w-full bg-gradient-to-br from-indigo-200 to-indigo-400">
-				<nav
-					id="header"
-					className="w-full z-30 top-10 py-1 bg-white shadow-lg border-b border-blue-400"
-				>
+				<nav id="header" className="bg-white shadow-lg">
 					<div className="w-full flex items-center justify-between mt-0 px-2 py-2">
 						<div className="flex items-center justify-start px-4 py-2 font-medium text-lg text-indigo-400">
 							User Management System
