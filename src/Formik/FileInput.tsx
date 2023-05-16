@@ -1,43 +1,11 @@
-// import React from 'react';
-// import { useField, FieldInputProps } from 'formik';
-
-// interface FileInputProps {
-// 	label: string;
-// 	name: string;
-// }
-
-// const FileInput: React.FC<FileInputProps> = ({ label, name }) => {
-// 	const [, meta, helpers] = useField(name);
-
-// 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-// 		const file = event.currentTarget.files && event.currentTarget.files[0];
-// 		helpers.setValue(file);
-// 	};
-
-// 	return (
-// 		<div className="mb-5">
-// 			<label htmlFor={name}>{label}</label>
-// 			<input
-// 				id={name}
-// 				type="file"
-// 				onChange={handleFileChange}
-// 				onBlur={() => helpers.setTouched(true)}
-// 			/>
-// 			{meta.touched && meta.error && (
-// 				<div className="text-red-500">{meta.error}</div>
-// 			)}
-// 		</div>
-// 	);
-// };
-
-// export default FileInput;
-import React from 'react';
-import { Field, ErrorMessage, useField } from 'formik';
+import React, { useState } from 'react';
+import { ErrorMessage, useField } from 'formik';
 import TextError from './TextError';
 import { Props } from '../interface/interfaces';
 
-const FileInput: React.FC<Props> = ({ label, name }) => {
+const FileInput = ({ label, name }: Props) => {
 	const [field, meta, helpers] = useField(name);
+	const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
 	const handleFileChange = async (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -50,6 +18,7 @@ const FileInput: React.FC<Props> = ({ label, name }) => {
 			reader.onload = () => {
 				if (reader.readyState === 2) {
 					const base64 = reader.result as string;
+					setSelectedImg(base64);
 					helpers.setValue(base64);
 				}
 			};
@@ -61,16 +30,18 @@ const FileInput: React.FC<Props> = ({ label, name }) => {
 	};
 
 	return (
-		<div className="mb-5">
-			<label htmlFor={name}>{label}</label>
-			<input
-				id={name}
-				type="file"
-				onChange={handleFileChange}
-				onBlur={field.onBlur}
-			/>
+		<>
+			<label className="cursor-pointer" htmlFor={name}>
+				{label}
+				<input id={name} type="file" onChange={handleFileChange} />
+			</label>
+			{selectedImg && (
+				<div className="w-[15rem] h-full grid place-items-center">
+					<img src={selectedImg} alt="Preview" />
+				</div>
+			)}
 			<ErrorMessage name={name} component={TextError} />
-		</div>
+		</>
 	);
 };
 

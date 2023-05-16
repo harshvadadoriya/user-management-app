@@ -17,7 +17,7 @@ export interface SignUpFormValues {
 	phone: string;
 	password: string;
 	confirmPassword: string;
-	image: File | null;
+	image: string | undefined;
 }
 
 export interface Props {
