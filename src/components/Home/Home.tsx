@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { logout, SignupUserData } from '../../redux/SignupSlice/SignupSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { toast } from 'react-hot-toast';

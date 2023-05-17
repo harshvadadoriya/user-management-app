@@ -6,6 +6,8 @@ import { Props } from '../interface/interfaces';
 const FileInput = ({ label, name }: Props) => {
 	const [field, meta, helpers] = useField(name);
 	const [selectedImg, setSelectedImg] = useState<string | null>(null);
+	console.log(field);
+	console.log(meta);
 
 	const handleFileChange = async (
 		event: React.ChangeEvent<HTMLInputElement>

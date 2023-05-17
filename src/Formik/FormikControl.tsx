@@ -1,4 +1,3 @@
-import React from 'react';
 import Input from './Input';
 import { InputControlType, Props } from '../interface/interfaces';
 

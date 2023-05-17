@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextErrorProps } from '../interface/interfaces';
 
 const TextError = (props: TextErrorProps) => {

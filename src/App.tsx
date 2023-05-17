@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppSelector } from './redux/store';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Signup from './components/SignUp/Signup';
