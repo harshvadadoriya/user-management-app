@@ -11,6 +11,8 @@ const FileInput = ({ label, name }: Props) => {
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		const file = event.currentTarget.files && event.currentTarget.files[0];
+		// console.log(file?.size);
+		// console.log(selectedImg);
 
 		if (file) {
 			const reader = new FileReader();

@@ -37,20 +37,14 @@ const Login: React.FC = () => {
 				JSON.parse(userData);
 
 			if (values.email === storedEmail && values.password === storedPassword) {
-				// Set the isLoggedIn state to true in Redux
 				dispatch(setLoggedIn(true));
 
-				// Show success toast message
 				toast.success('Login successful');
 				onSubmitProps.resetForm();
 
-				// Redirect to the Home page
 				navigate('/home');
 				console.log(userData);
-
-				// dispatch(addUser(userData));
 			} else {
-				// Show error toast message
 				toast.error('Invalid email or password');
 			}
 		}
@@ -105,7 +99,7 @@ const Login: React.FC = () => {
 												<p>
 													Don't have an account yet?
 													<NavLink
-														className="ml-2 text-indigo-500"
+														className="ml-2 text-blue-700 font-medium"
 														to="/signup"
 													>
 														Sign up here

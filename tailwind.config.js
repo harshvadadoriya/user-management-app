@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'custom-red': '#fed7d7',
+				'custom-input': 'rgb(255 237 213)',
 			},
 		},
 	},

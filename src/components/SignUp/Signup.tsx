@@ -40,7 +40,32 @@ const validationSchema = Yup.object({
 		.oneOf([Yup.ref('password'), ''], 'Passwords does not match')
 		.required('Confirm Password is required'),
 	image: Yup.string()
-		.matches(/data:image\/(png|jpg|);base64?/i, 'Image must be jpg or png')
+		// .matches(/data:image\/(png|jpg|);base64?/i, 'Image must be jpg or png')
+		.test(
+			'fileType',
+			'Image must be a JPG or PNG file',
+			async function (value) {
+				if (!value) {
+					return true;
+				}
+				const fileInput = document.getElementById('image') as HTMLInputElement;
+				const file = fileInput.files && fileInput.files[0];
+				const fileType = file?.type ?? '';
+				const validTypes = ['image/jpg', 'image/png'];
+				return validTypes.includes(fileType);
+			}
+		)
+		.test('fileSize', 'Image size must be less than 2MB', function (value) {
+			if (!value) {
+				return true;
+			}
+			const fileInput = document.getElementById('image') as HTMLInputElement;
+			const file = fileInput.files && fileInput.files[0];
+			if (file && file.size) {
+				return file.size <= 2 * 1024 * 1024;
+			}
+			return false;
+		})
 		.required('Photo is required'),
 });
 
@@ -129,11 +154,14 @@ const Signup: React.FC = () => {
 											>
 												Reset
 											</button>
-											<div className="mt-5">
+											<div className="my-5">
 												<p>
 													Already have an account?
-													<NavLink className="ml-2 text-indigo-500" to="/login">
-														Login here!
+													<NavLink
+														className="ml-2 text-blue-700 font-medium"
+														to="/login"
+													>
+														Login here
 													</NavLink>
 												</p>
 											</div>
@@ -143,8 +171,8 @@ const Signup: React.FC = () => {
 							</Formik>
 						</div>
 					</div>
-					<div className="signupImg">
-						<img className="w-full" src={SignupImg} />
+					<div className="signupImg flex items-center">
+						<img className="w-full h-[30rem]" src={SignupImg} />
 					</div>
 				</div>
 			</div>
