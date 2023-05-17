@@ -18,12 +18,19 @@ input[type='password'] {
 	border-radius: 6px;
 }
 
+input[type='file'] {
+	display: none;
+}
+
 @media (max-width: 1086px) {
 	.signupImg > img {
 		margin-top: 2rem;
 	}
 }
 
-input[type='file'] {
-	display: none;
+@media (max-width: 1280px) {
+	.Signup,
+	.Login {
+		margin-top: 20px;
+	}
 }

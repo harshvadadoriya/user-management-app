@@ -3,21 +3,13 @@ export interface IOption {
 	value: string;
 }
 
-export interface IFormValues {
-	email: string;
-	description: string;
-	selectOption: string;
-	radioOption: string;
-	checkboxOption: string[];
-}
-
 export interface SignUpFormValues {
-	name: string;
+	name?: string;
 	email: string;
-	phone: string;
+	phone?: string;
 	password: string;
-	confirmPassword: string;
-	image: string | undefined;
+	confirmPassword?: string;
+	image?: string | undefined;
 }
 
 export interface Props {
